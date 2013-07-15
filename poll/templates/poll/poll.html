@@ -31,9 +31,9 @@
 <div class="poll_style">
 	<form method="get" action="." id="poll_form">
 		<h3>{{ poll.title }}</h3>
-		<ul>
+		<ul style="list-style: none;padding-left: 0;">
 			{% for i in items %}
-			<li><input type="checkbox" style="display:inline; list-style: NONE" name="item" id="item_{{ i.id }}" value="{{ i.id }}" />
+			<li><input type="checkbox" style="display:inline" name="item" id="item_{{ i.id }}" value="{{ i.id }}" />
 				<label for="item_{{ i.id }}">{{ i.value }}</label></li>
 			{% endfor %}
 		</ul>                        
