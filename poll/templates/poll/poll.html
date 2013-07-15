@@ -4,8 +4,8 @@
 
 {% block poll_script %}
 <script type="text/javascript">
-	var vote_url = '{% url poll_ajax_vote poll.pk %}';
-	var result_url = '{% url poll_result poll.pk %}';
+	var vote_url = '{% url "poll_ajax_vote" poll.pk %}';
+	var result_url = '{% url "poll_result" poll.pk %}';
 	$(document).ready(function() {
 		function showResults() {
 			$.get(result_url, function(data) {
@@ -30,14 +30,14 @@
 {% block poll_content %}
 <div class="poll_style">
 	<form method="get" action="." id="poll_form">
-		<p class="title">{{ poll.title }}</p>
+		<h3>{{ poll.title }}</h3>
 		<ul>
 			{% for i in items %}
-			<li><input type="radio" name="item" id="item_{{ i.id }}" value="{{ i.id }}" /> 
-				<label for="item_{{ i.id }}">{{ i.value }}</label></li> 
+			<li><input type="checkbox" style="display:inline; list-style: NONE" name="item" id="item_{{ i.id }}" value="{{ i.id }}" />
+				<label for="item_{{ i.id }}">{{ i.value }}</label></li>
 			{% endfor %}
 		</ul>                        
-		<p class="poll_send"><input type="button" id="poll_send" value="{% trans "Vote" %}" /></p>
+		<p class="poll_send"><input type="button" style="" id="poll_send" value="{% trans "Vote" %}" /></p>
 	</form>
 </div>	
 {% endblock %}
